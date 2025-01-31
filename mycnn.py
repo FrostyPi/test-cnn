@@ -9,6 +9,8 @@ transform = transforms.Compose([
     transforms.ToTensor(),
     transforms.Normalize((0.5,), (0.5,))
 ])
+
+# MNIST IMAGES HAVE SIZE 28X28
 trainset = torchvision.datasets.MNIST(root = './data', train=True, download = True, transform=transform)
 testset = torchvision.datasets.MNIST(root= './data', train=False, download=True, transform=transform)
 
@@ -18,6 +20,8 @@ testloader = DataLoader(testset, batch_size=64, shuffle=True)
 class MyCNN(nn.Module):
     def __init__(self):
         super().__init__()
+        # input : [batch_size, num_channels, image_height, image_width]
+        # output: 10 classes
     def forward(self, x):
         return x
 
